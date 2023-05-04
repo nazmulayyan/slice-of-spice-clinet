@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
+
 
 const Login = () => {
     return (
@@ -30,8 +33,8 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn bg-rose-500">Login</button>
                                 <div className='flex gap-3 mt-6 w-full'>
-                                    <button className="btn bg-rose-500 w-1/2">sing in with google</button>
-                                    <button className="btn bg-rose-500 w-1/2">sing in with github</button>
+                                    <button className="btn bg-rose-500 w-1/2">sing in with <FcGoogle className='ms-1 bg-white rounded-lg text-lg'/></button>
+                                    <button className="btn bg-rose-500 w-1/2">sing in with <FaGithub className='bg-gray-500 ms-1 rounded-lg text-lg'/></button>
                                 </div>
                             </div>
                             <Link className='text-rose-500 uppercase font-semibold mt-3' to='/register'>don't have an account</Link>
