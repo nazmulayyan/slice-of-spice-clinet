@@ -6,7 +6,7 @@ const Header = () => {
         <div className='bg-rose-500'>
             <div className="navbar md:px-10 px-5">
                 <div className="navbar-start">
-                    <Link className="font-bold text-xl uppercase text-white" to='/'>Splice of Spice</Link>
+                    <Link className="font-bold text-xl uppercase text-white" to='/'>Slice of Spice</Link>
                     <div className="dropdown">
 
                         <label tabIndex={0} className="btn btn-ghost me-0 lg:hidden">
@@ -32,8 +32,6 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
-
-
         </div>
     );
 };

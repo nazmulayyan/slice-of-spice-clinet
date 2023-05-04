@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-200 py-20">
                 <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left">
                         <h3 className="text-3xl font-bold uppercase">If you don't have an account </h3>
