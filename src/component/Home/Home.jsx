@@ -10,9 +10,9 @@ SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Home = () => {
     return (
-        <div className='flex w-full items-center py-10'>
-            
-            <div className='w-1/2'>
+        <div className='md:flex md:flex-row flex-row-reverse w-full items-center py-10'>
+
+            <div className='md:w-1/2'>
                 <Swiper
                      spaceBetween={50}
                      slidesPerView={1}
@@ -25,7 +25,7 @@ const Home = () => {
                 >
                     <SwiperSlide>
                         <div>
-                            <h1 className='text-6xl capitalize font-bold'>a true test of japanese cousine</h1>
+                            <h1 className='text-6xl capitalize leading-snug  font-bold'>a true test of japanese cousine</h1>
                             <div className='mt-10'>
                                 <button className="btn btn-outline text-rose-500 capitalize">Book a table</button>
                                 <button className="btn btn-outline text-rose-500 capitalize ms-6">order online</button>
@@ -34,7 +34,7 @@ const Home = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div>
-                            <h1 className='text-6xl capitalize font-bold'>the freshest test of japanese cousine</h1>
+                            <h1 className='text-6xl capitalize leading-snug  font-bold'>the freshest test of japanese cousine</h1>
                             <div className='mt-10'>
                                 <button className="btn btn-outline text-rose-500 capitalize">Book a table</button>
                                 <button className="btn btn-outline text-rose-500 capitalize ms-6">order online</button>
@@ -43,7 +43,7 @@ const Home = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div>
-                            <h1 className='text-6xl capitalize font-bold'>we bring together the freshest test </h1>
+                            <h1 className='text-6xl leading-snug capitalize font-bold'>we bring together the freshest test </h1>
                             <div className='mt-10'>
                                 <button className="btn btn-outline text-rose-500 capitalize">Book a table</button>
                                 <button className="btn btn-outline text-rose-500 capitalize ms-6">order online</button>
@@ -53,7 +53,7 @@ const Home = () => {
                 </Swiper>
             </div>
 
-            <div className='w-1/2'>
+            <div className='md:w-1/2 md:block hidden'>
                 <Swiper
                     spaceBetween={50}
                     slidesPerView={1}
