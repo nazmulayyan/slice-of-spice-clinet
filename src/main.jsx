@@ -10,6 +10,7 @@ import Blog from './component/Blog/Blog.jsx';
 import Home from './component/Home/Home.jsx';
 import Login from './component/Login/Login.jsx';
 import Register from './component/Register/Register.jsx';
+import NotFoundPage from './component/NotFoundPage/NotFoundPage';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path:'/register',
         element: <Register></Register>
       },
+      {
+        path: '*',
+        element: <NotFoundPage></NotFoundPage>
+      }
 
     ]
   },
