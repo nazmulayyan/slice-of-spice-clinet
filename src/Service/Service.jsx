@@ -12,7 +12,7 @@ const Service = () => {
                 <h4 className='text-center text-4xl font-bold uppercase mt-20 text-rose-500 '>Our Service</h4>
                 <h5 className='text-center text-4xl font-bold uppercase mt-2 mb-14'>what we offer</h5>
             </div>
-            <div className='grid grid-cols-4 gap-4 text-center'>
+            <div className='grid md:grid-cols-4 gird-cols-1 gap-4 text-center'>
                 <div>
                     <img className='m-auto' src={img1} alt="" />
                     <h3 className='text-3xl font-semibold uppercase mt-4 pb-2'>Breakfast</h3>

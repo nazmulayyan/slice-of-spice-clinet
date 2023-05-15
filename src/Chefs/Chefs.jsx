@@ -13,7 +13,7 @@ const Chefs = () => {
         <div className='mb-20'>
             <h2 className='text-center text-4xl font-bold uppercase mt-20 mb-14'>meet our chefs</h2>
 
-            <div className='grid grid-cols-3 gap-4'>
+            <div className='grid md:grid-cols-3 grid-cols-1  gap-4'>
                 {chefs.map(chef => (
                     <div className='p-4 rounded-lg bg-rose-500'  key={chef.id}>
                         <img className='w-full h-96 rounded-lg' src={chef.picture} alt="" />
