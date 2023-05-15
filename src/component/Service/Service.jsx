@@ -1,8 +1,8 @@
 import React from 'react';
-import img1 from '../assets/service/brekafast.jpg';
-import img2 from '../assets/service/lunch.jpg';
-import img3 from '../assets/service/dinner.jpg';
-import img4 from '../assets/service/others.jpg';
+import img1 from '../../assets/service/brekafast.jpg';
+import img2 from '../../assets/service/lunch.jpg';
+import img3 from '../../assets/service/dinner.jpg';
+import img4 from '../../assets/service/others.jpg';
 
 
 const Service = () => {

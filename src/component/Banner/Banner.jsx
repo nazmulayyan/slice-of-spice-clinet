@@ -2,9 +2,9 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper/core';
-import banner1 from '../assets/banner/slide1.png';
-import banner2 from '../assets/banner/slide2.png';
-import banner3 from '../assets/banner/slide3.png';
+import banner1 from '../../assets/banner/slide1.png';
+import banner2 from '../../assets/banner/slide2.png';
+import banner3 from '../../assets/banner/slide3.png';
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 

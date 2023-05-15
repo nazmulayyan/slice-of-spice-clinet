@@ -1,8 +1,8 @@
 import React from 'react';
-import Banner from '../../Banner/Banner';
-import Chefs from '../../Chefs/Chefs';
-import Service from '../../Service/Service';
-import Branch from '../../Branch/Branch';
+import Banner from '../Banner/Banner';
+import Chefs from '../Chefs/Chefs';
+import Service from '../Service/Service';
+import Branch from '../Branch/Branch';
 
 
 const Home = () => {
