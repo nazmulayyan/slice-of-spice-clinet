@@ -3,28 +3,29 @@ import { Link } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Provider/AuthProvider';
-// import { useLocation, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = () => {
 
-    const{loginUser} = useContext(AuthContext);
-    // const location = useLocation();
-    // const history = useHistory();
+
+    const { loginUser, handleGoogleSignIn, handleGithubSingIn } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = (event) =>{
+    const handleLogin = (event) => {
         event.preventDefault();
-        if(email,password){
+        if (email, password) {
             loginUser(email, password)
-            .then(result =>{
-                console.log(result.user);
-                // history.push('/home')
-            })
-            .catch((error) =>{
-                console.log(error.message);
-            })
+                .then(result => {
+                    console.log(result.user);
+                    navigate(`/chef/${result.user.id}`); // Redirect to chefDetails page
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                })
         }
     }
     return (
@@ -44,7 +45,7 @@ const Login = () => {
                                     <span className="label-text">Email</span>
                                 </label>
 
-                                <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" className="input input-bordered" required/>
+                                <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" className="input input-bordered" required />
 
                             </div>
 
@@ -54,7 +55,7 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
 
-                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered" required/>
+                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="input input-bordered" required />
 
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -68,9 +69,9 @@ const Login = () => {
 
                                 <div className='flex gap-3 mt-6 w-full'>
 
-                                    <button className="btn bg-rose-500 w-1/2">sing in with <FcGoogle className='ms-1 bg-white rounded-lg text-lg'/></button>
+                                    <button onClick={handleGoogleSignIn} className="btn bg-rose-500 w-1/2">sing in with <FcGoogle className='ms-1 bg-white rounded-lg text-lg' /></button>
 
-                                    <button className="btn bg-rose-500 w-1/2">sing in with <FaGithub className='bg-gray-500 ms-1 rounded-lg text-lg'/></button>
+                                    <button onClick={handleGithubSingIn}  className="btn bg-rose-500 w-1/2">sing in with <FaGithub className='bg-gray-500 ms-1 rounded-lg text-lg' /></button>
 
                                 </div>
                             </div>

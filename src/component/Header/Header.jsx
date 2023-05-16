@@ -1,60 +1,81 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ActiveLink from '../ActiveLink/ActiveLink';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user?.email);
+    const [showTooltip, setShowTooltip] = useState(false);
 
     const handleLogOut = () => {
-        logOut().then()
+        logOut()
+            .then()
             .catch((err) => {
                 console.log(err);
-            })
-    }
+            });
+    };
+
+    const handleToggleTooltip = () => {
+        setShowTooltip(!showTooltip);
+    };
+
     return (
         <div className='bg-rose-500'>
-            <div className="navbar md:px-10 px-5 ">
-                <div className="navbar-start">
-                    <Link className="font-bold text-xl uppercase text-white" to='/'>Slice of Spice</Link>
-
-
+            <div className='navbar md:px-10 px-5'>
+                <div className='navbar-start'>
+                    <Link className='font-bold text-xl uppercase text-white' to='/'>
+                        Slice of Spice
+                    </Link>
                 </div>
 
-
                 <div className='navbar-end'>
-
-                    <div className="me-0 hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
+                    <div className='me-0 hidden lg:flex'>
+                        <ul className='menu menu-horizontal px-1'>
                             <li>
-                                <ActiveLink className='text-white text-lg font-semibold' to='/'>Home</ActiveLink>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/'>
+                                    Home
+                                </ActiveLink>
                             </li>
-
                             <li>
-                                <ActiveLink className='text-white text-lg font-semibold' to='/blog'>Blog</ActiveLink>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/blog'>
+                                    Blog
+                                </ActiveLink>
                             </li>
-
-                            {user?.email ? (
-                                <li><button
-                                    onClick={handleLogOut}
-                                    className='text-white text-lg font-semibold'>Logout</button></li>
-                            ) : (
+                            {(user?.email || user?.providerData) && (
+                                <li>
+                                    <button onClick={handleLogOut} className='text-white text-lg font-semibold'>
+                                        Logout
+                                    </button>
+                                </li>
+                            )}
+                            {!user?.email && !user?.providerData && (
                                 <div className='lg:flex'>
                                     <li>
-                                        <ActiveLink className='text-white text-lg font-semibold' to='/login'>Login</ActiveLink>
+                                        <ActiveLink className='text-white text-lg font-semibold' to='/login'>
+                                            Login
+                                        </ActiveLink>
                                     </li>
                                     <li>
-                                        <ActiveLink className='text-white text-lg font-semibold' to='/register'>Register</ActiveLink>
+                                        <ActiveLink className='text-white text-lg font-semibold' to='/register'>
+                                            Register
+                                        </ActiveLink>
                                     </li>
                                 </div>
                             )}
-                            <li ></li>
-                            <div className='bg-white p-1 rounded-full w-14 h-14'>
-                                <img className='rounded-full' src={user?.photoURL} alt="" />
-                            </div>
-
-
+                            {user?.photoURL && (
+                                <div
+                                    className='relative bg-white p-1 rounded-full w-14 h-14'
+                                    onMouseEnter={handleToggleTooltip}
+                                    onMouseLeave={handleToggleTooltip}
+                                >
+                                    {showTooltip && (
+                                        <span className='absolute -bottom-14 -left-4 bg-gray-800 text-white px-2 py-1 rounded shadow'>
+                                            {user.displayName}
+                                        </span>
+                                    )}
+                                    <img className='rounded-full ' src={user.photoURL} alt='User Photo' />
+                                </div>
+                            )}
                         </ul>
                     </div>
 
@@ -71,17 +92,44 @@ const Header = () => {
                             <li>
                                 <ActiveLink className='text-white text-lg font-semibold' to='/blog'>Blog</ActiveLink>
                             </li>
-                            <li>
-                                <ActiveLink className='text-white text-lg font-semibold' to='/login'>Login</ActiveLink>
-                            </li>
-                            <li>
-                                <ActiveLink className='text-white text-lg font-semibold' to='/register'>Register</ActiveLink>
-                            </li>
+                            {(user?.email || user?.providerData) && (
+                                <li>
+                                    <button onClick={handleLogOut} className='text-white text-lg font-semibold'>
+                                        Logout
+                                    </button>
+                                </li>
+                            )}
+                            {!user?.email && !user?.providerData && (
+                                <div className='lg:flex'>
+                                    <li>
+                                        <ActiveLink className='text-white text-lg font-semibold' to='/login'>
+                                            Login
+                                        </ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink className='text-white text-lg font-semibold' to='/register'>
+                                            Register
+                                        </ActiveLink>
+                                    </li>
+                                </div>
+                            )}
+                            {user?.photoURL && (
+                                <div
+                                    className='relative bg-white p-1 rounded-full w-14 h-14'
+                                    onMouseEnter={handleToggleTooltip}
+                                    onMouseLeave={handleToggleTooltip}
+                                >
+                                    {showTooltip && (
+                                        <span className='absolute top-0 left-full bg-gray-800 text-white px-2 py-1 rounded shadow'>
+                                            {user.displayName}
+                                        </span>
+                                    )}
+                                    <img className='rounded-full ' src={user.photoURL} alt='User Photo' />
+                                </div>
+                            )}
                         </ul>
 
                     </div>
-
-
                 </div>
             </div>
         </div>

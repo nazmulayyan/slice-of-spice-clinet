@@ -13,6 +13,7 @@ import Register from './component/Register/Register.jsx';
 import NotFoundPage from './component/NotFoundPage/NotFoundPage';
 import ChefDetails from './component/ChefDetails/ChefDetails';
 import AuthProvider from './Provider/AuthProvider';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/chef/:id',
-        element: <ChefDetails></ChefDetails>
+        element: (
+          <PrivateRoute>
+            <ChefDetails></ChefDetails>
+          </PrivateRoute>
+        )
       },
       {
         path: '*',
