@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ActiveLink from '../ActiveLink/ActiveLink';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user?.email);
+
+    const handleLogOut = () => {
+        logOut().then()
+            .catch((err) => {
+                console.log(err);
+            })
+    }
     return (
         <div className='bg-rose-500'>
             <div className="navbar md:px-10 px-5 ">
@@ -17,10 +27,34 @@ const Header = () => {
 
                     <div className="me-0 hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
-                            <li><ActiveLink className='text-white text-lg font-semibold' to='/'>Home</ActiveLink></li>
-                            <li><ActiveLink className='text-white text-lg font-semibold' to='/blog'>Blog</ActiveLink></li>
-                            <li><ActiveLink className='text-white text-lg font-semibold' to='/login'>Login</ActiveLink></li>
-                            <li><ActiveLink className='text-white text-lg font-semibold' to='/register'>Register</ActiveLink></li>
+                            <li>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/'>Home</ActiveLink>
+                            </li>
+
+                            <li>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/blog'>Blog</ActiveLink>
+                            </li>
+
+                            {user?.email ? (
+                                <li><button
+                                    onClick={handleLogOut}
+                                    className='text-white text-lg font-semibold'>Logout</button></li>
+                            ) : (
+                                <div className='lg:flex'>
+                                    <li>
+                                        <ActiveLink className='text-white text-lg font-semibold' to='/login'>Login</ActiveLink>
+                                    </li>
+                                    <li>
+                                        <ActiveLink className='text-white text-lg font-semibold' to='/register'>Register</ActiveLink>
+                                    </li>
+                                </div>
+                            )}
+                            <li ></li>
+                            <div className='bg-white p-1 rounded-full w-14 h-14'>
+                                <img className='rounded-full' src={user?.photoURL} alt="" />
+                            </div>
+
+
                         </ul>
                     </div>
 
@@ -31,10 +65,18 @@ const Header = () => {
                         </label>
 
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-rose-500 rounded-box w-52">
-                            <li><Link className='text-white text-lg font-semibold' to='/'>Home</Link></li>
-                            <li><Link className='text-white text-lg font-semibold' to='/blog'>Blog</Link></li>
-                            <li><Link className='text-white text-lg font-semibold' to='/login'>Login</Link></li>
-                            <li><Link className='text-white text-lg font-semibold' to='/register'>Register</Link></li>
+                            <li>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/'>Home</ActiveLink>
+                            </li>
+                            <li>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/blog'>Blog</ActiveLink>
+                            </li>
+                            <li>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/login'>Login</ActiveLink>
+                            </li>
+                            <li>
+                                <ActiveLink className='text-white text-lg font-semibold' to='/register'>Register</ActiveLink>
+                            </li>
                         </ul>
 
                     </div>
