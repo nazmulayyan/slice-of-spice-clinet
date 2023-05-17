@@ -5,31 +5,32 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Login = () => {
-
-
     const { loginUser, handleGoogleSignIn, handleGithubSingIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleLogin = (event) => {
         event.preventDefault();
-        if (email, password) {
+        if (email.trim() === '' || password.trim() === '') {
+            setError('Please enter both email and password.');
+        } else {
+            setError('');
             loginUser(email, password)
                 .then(result => {
-                    const from = location.state.from||'/'
+                    const from = location.state?.from || '/';
                     console.log(result.user);
                     navigate(from); // Redirect to chefDetails page
                 })
                 .catch((error) => {
                     console.log(error.message);
-                })
+                    setError('Login failed. Please check your credentials.');
+                });
         }
-    }
+    };
     return (
         <div>
             <div className="hero min-h-screen bg-base-200 py-20">
@@ -40,6 +41,7 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
+                            {error && <p className="text-red-500">{error}</p>}
 
                             <div className="form-control">
 
@@ -73,7 +75,7 @@ const Login = () => {
 
                                     <button onClick={handleGoogleSignIn} className="btn bg-rose-500 w-1/2">sing in with <FcGoogle className='ms-1 bg-white rounded-lg text-lg' /></button>
 
-                                    <button onClick={handleGithubSingIn}  className="btn bg-rose-500 w-1/2">sing in with <FaGithub className='bg-gray-500 ms-1 rounded-lg text-lg' /></button>
+                                    <button onClick={handleGithubSingIn} className="btn bg-rose-500 w-1/2">sing in with <FaGithub className='bg-gray-500 ms-1 rounded-lg text-lg' /></button>
 
                                 </div>
                             </div>
