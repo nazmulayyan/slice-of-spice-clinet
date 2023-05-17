@@ -15,7 +15,7 @@ const Blog = () => {
     const [expandedBlogId, setExpandedBlogId] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/blogs')
+        fetch('https://slice-of-spice-server-nazmulayyan.vercel.app/blogs')
             .then(res => res.json())
             .then(data => setBlogs(data.questions))
     }, []);
