@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
             setUser(loggedInUser);
         })
         .catch(error =>{
-            console.log(error)
+            console.log(error);
         })
     }
 

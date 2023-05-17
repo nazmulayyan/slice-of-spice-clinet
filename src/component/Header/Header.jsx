@@ -32,7 +32,7 @@ const Header = () => {
                     <div className='me-0 hidden lg:flex'>
                         <ul className='menu menu-horizontal px-1'>
                             <li>
-                                <ActiveLink className='text-white text-lg font-semibold' to='/'>
+                                <ActiveLink className='' to='/'>
                                     Home
                                 </ActiveLink>
                             </li>

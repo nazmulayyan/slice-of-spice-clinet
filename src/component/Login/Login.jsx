@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../Provider/AuthProvider';
@@ -12,6 +12,7 @@ const Login = () => {
 
     const { loginUser, handleGoogleSignIn, handleGithubSingIn } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,8 +21,9 @@ const Login = () => {
         if (email, password) {
             loginUser(email, password)
                 .then(result => {
+                    const from = location.state.from||'/'
                     console.log(result.user);
-                    navigate(`/chef/${result.user.id}`); // Redirect to chefDetails page
+                    navigate(from); // Redirect to chefDetails page
                 })
                 .catch((error) => {
                     console.log(error.message);
