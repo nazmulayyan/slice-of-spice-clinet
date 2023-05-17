@@ -11,7 +11,7 @@ const ChefDetails = () => {
     const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
     useEffect(() => {
-        fetch(`https://slice-of-spice-server-nazmulayyan.vercel.app/chefs/${id}`) // Use the chef ID to fetch data
+        fetch(`https://slice-of-spice-server-nazmulayyan.vercel.app/chef/${id}`) // Use the chef ID to fetch data
             .then(res => res.json())
             .then(data => {
                 setChefData(data);
